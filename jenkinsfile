@@ -1,12 +1,12 @@
 node {
-    stage('cont.download') 
+    stage('cont.downloads') 
     {
     git 'https://github.com/Rushav717/deploy2.git'
     }
-    stage('cont.build') {
+    stage('cont.builds') {
     sh 'mvn package'
 }
-stage('cont.deployment') {
+stage('cont.deployments') {
     deploy adapters: [tomcat8(credentialsId: '792db714-d39f-42b1-8946-3c2df95a8b51', path: '', url: 'http://54.179.97.190:8080/manager/html')], contextPath: 'dev1', war: '**/*.war'
 }
 }
